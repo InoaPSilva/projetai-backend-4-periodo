@@ -1,0 +1,23 @@
+{
+  "name": "projetai-backend-4-periodo",
+  "version": "1.0.0",
+  "description": "* teste de push para o repositorio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/InoaPSilva/projetai-backend-4-periodo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/InoaPSilva/projetai-backend-4-periodo/issues"
+  },
+  "homepage": "https://github.com/InoaPSilva/projetai-backend-4-periodo#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
