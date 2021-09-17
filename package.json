@@ -2,7 +2,7 @@
   "name": "projetai-backend-4-periodo",
   "version": "1.0.0",
   "description": "* teste de push para o repositorio",
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/InoaPSilva/projetai-backend-4-periodo#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "connect-flash": "^0.1.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "gitmoji-cli": "^4.6.1",
+    "mongoose": "^6.0.6",
+    "nodemon": "^2.0.12"
   }
 }
