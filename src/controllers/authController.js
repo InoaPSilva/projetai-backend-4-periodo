@@ -1,10 +1,6 @@
-const express = require('express');
-
-const userModel = require('../models/user');
-
-const mongoose = require('mongoose')
-const User = mongoose.model('user');
-const _ = require('lodash');
+const mongoose = require('mongoose');
+const passport = require('passport');
+const User = require('../models/user');
 
 const register = (req, res, next) => {
     // Needed informations to generate a user
@@ -24,8 +20,19 @@ const register = (req, res, next) => {
     })
 };
 
-const login = (req, res) => {
-
+const login = (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) {
+            return res.status(400).json(err);
+        }
+        else if (user) {
+            console.log(user.generateJwt());
+            return res.status(200).json({ "token": user.generateJwt() });
+        }
+        else {
+            return res.status(404).json(info);
+        }
+    })(req, res, next);
 };
 
 const teste = async (req, res, next) => {

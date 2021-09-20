@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+    accountType:{
+        type: Number,
+        default: 1,
+        select:false
+    },
     enrollment:{
         type:String,
         unique:true,

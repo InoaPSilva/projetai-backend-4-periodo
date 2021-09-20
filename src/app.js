@@ -1,12 +1,18 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const passport = require('passport');
 const session = require("express-session");
 const flash = require("connect-flash");
+
+require('./config/passport');
+
 
 // config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 //session
 app.use(session({
