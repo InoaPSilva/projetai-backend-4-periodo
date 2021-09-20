@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 const register = (req, res, next) => {
     // Needed informations to generate a user
-    const user = new userModel();
+    const user = new User();
     user.enrollment = req.body.enrollment;
     user.cpf = req.body.cpf;
     user.name = req.body.name;
@@ -26,7 +26,6 @@ const login = (req, res, next) => {
             return res.status(400).json(err);
         }
         else if (user) {
-            console.log(user.generateJwt());
             return res.status(200).json({ "token": user.generateJwt() });
         }
         else {
