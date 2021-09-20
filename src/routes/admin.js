@@ -1,13 +1,17 @@
 const express = require("express");
 const router = express.Router();
-const mongoose = require("mongoose");
+const mongoose = require("mongoose");   
 
-const user = require('../controllers/userController')
+const authController = require('../controllers/authController')
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
     res.send("Works goddammit!");
 });
 
-app.post('/user/register', user)
+router.post('/register', authController.register)
 
-module.exports = router;
+router.post('/user/login',  authController.login)
+
+router.get('/teste',  authController.teste)
+
+module.exports = app => app.use("/", router);

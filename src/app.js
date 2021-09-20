@@ -5,6 +5,9 @@ const session = require("express-session");
 const flash = require("connect-flash");
 
 // config
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //session
 app.use(session({
     secret: "projetai",
@@ -27,7 +30,8 @@ app.use(express.json());
 
 //mongoose
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost/").then(() => {
+
+mongoose.connect("mongodb://localhost:27017/db").then(() => {
     console.log("MongoDB Connected!");
 }).catch((err) => {
     console.log("Error trying to connect to MongoDB :( " + err);
@@ -44,3 +48,5 @@ const PORT = 8089;
 app.listen(PORT, () => {
     console.log("Server ON!");
 });
+
+require('./routes/admin')(app);
