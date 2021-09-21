@@ -34,13 +34,11 @@ const login = (req, res, next) => {
     })(req, res, next);
 };
 
-const teste = async (req, res, next) => {
-
-};
+// const teste = async (req, res, next) => { };
 
 
 module.exports = {
     login,
     register,
-    teste
+    // teste
 }

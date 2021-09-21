@@ -55,4 +55,5 @@ app.listen(PORT, () => {
     console.log("Server ON!");
 });
 
-require('./routes/admin')(app);
+require('./routes/userRoutes')(app);
+// require('./routes/projectRoutes')(app);
