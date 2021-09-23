@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const User = require('../models/user');
 
+// register user
 const register = (req, res, next) => {
     // Needed informations to generate a user
     const user = new User();
@@ -11,16 +12,19 @@ const register = (req, res, next) => {
     user.email = req.body.email;
     user.password = req.body.password;
 
-    user.save(function (err) {
+    // catching error
+    user.save((err) => {
         if (!err) {
             res.sendStatus(200)
         } else {
             return next(err);
         }
-    })
+    });
 };
 
+// authenticate user
 const login = (req, res, next) => {
+    // calls passport middleware
     passport.authenticate('local', (err, user, info) => {
         if (err) {
             return res.status(400).json(err);
@@ -34,11 +38,7 @@ const login = (req, res, next) => {
     })(req, res, next);
 };
 
-// const teste = async (req, res, next) => { };
-
-
 module.exports = {
     login,
-    register,
-    // teste
+    register
 }
