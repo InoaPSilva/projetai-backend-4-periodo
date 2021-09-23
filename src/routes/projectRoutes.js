@@ -9,12 +9,10 @@ router.get("/auth", (req, res) => {
 
 router.post('/project/register', projectController.register);
 
-router.put('/project/edit',  projectController.edit);
+router.put('/project/edit/:id?',  projectController.edit);
 
-router.get('/project/:id', projectController.display);
+router.get('/project/:id?', projectController.display);
 
-router.delete('/project/:id', projectController.delete)
-
-// router.get('/teste',  projectController.teste)
+router.delete('/project/remove/:id?', projectController.remove)
 
 module.exports = app => app.use("/", router);

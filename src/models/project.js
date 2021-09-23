@@ -1,22 +1,26 @@
 const mongoose = require('mongoose');
-const {Types: {Long}} = mongoose;
-require('mongoose-long')(mongoose);
+
 
 const projectSchema = new mongoose.Schema({
+    title:{
+        type: String,
+        required: true
+    },
+    
     summary:{
-        type: Long,
-        require:true,
+        type: String,
+        require: true,
     },
     objective:{
-        type: Long,
-        require:true,
+        type: String,
+        require: true,
     },
     
     // pics:{},
     
     class:{
-        type:String,
-        require:true,
+        type: String,
+        require: true,
     },
 
     createdAt:{

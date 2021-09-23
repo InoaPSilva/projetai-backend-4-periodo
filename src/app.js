@@ -56,4 +56,4 @@ app.listen(PORT, () => {
 });
 
 require('./routes/userRoutes')(app);
-// require('./routes/projectRoutes')(app);
+require('./routes/projectRoutes')(app);
