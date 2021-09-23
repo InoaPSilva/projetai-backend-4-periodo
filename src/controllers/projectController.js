@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const User = require('../models/project');
 
-const register = (req, res, next) => {};
+const register = (req, res, next) => {
+    
+};
 
 const edit = (req, res) => {};
 
