@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Schema = mongoose.Schema;
 
 const projectSchema = new mongoose.Schema({
     title:{
@@ -16,8 +16,17 @@ const projectSchema = new mongoose.Schema({
         require: true,
     },
     
-    // pics:{},
-    
+    image:{
+        type: Schema.Types.ObjectId, 
+        ref:'image'
+    },
+
+    // user:{
+    //     type: Schema.Types.ObjectId, 
+    //     ref:'user',
+    //     required: true
+    // },
+
     class:{
         type: String,
         require: true,
@@ -27,7 +36,7 @@ const projectSchema = new mongoose.Schema({
         type:Date,
         default:Date.now(),
         select:false
-    },
+    }
 
 });
 

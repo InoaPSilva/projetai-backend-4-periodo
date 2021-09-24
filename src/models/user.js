@@ -4,10 +4,11 @@ const jwt = require('jsonwebtoken');
 
 const userSchema = new mongoose.Schema({
     accountType:{
-        type: Number,
-        default: 1,
+        type:Number,
+        default:1,
         select:false
     },
+    
     enrollment:{
         type:String,
         unique:true,
@@ -43,8 +44,8 @@ const userSchema = new mongoose.Schema({
     },
     
     saltSecret: {
-        type: String,
-        select: false
+        type:String,
+        select:false
     }
 });
 
