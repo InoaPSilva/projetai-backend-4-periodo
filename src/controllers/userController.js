@@ -48,16 +48,20 @@ const editUser = async (req, res) => {
 };
 
 const forgotUser = async (req, res) => {
-    await newUser.updateOne({},
+    console.log(req.email);
+    if(req.method === "PUT"){
+        newUser = await User
+        .updateOne({email: req.body.email},
         {
            $set: { password : req.body.password}
         }, (err)=>{
             if(err){
                 return res.sendStatus(400);
             } else {
-                return res.send(200);
+                return res.sendStatus(200);
             }
         });
+    }
 };
 
 module.exports = {
