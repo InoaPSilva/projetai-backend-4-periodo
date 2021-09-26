@@ -33,7 +33,7 @@ const edit = async (req, res) => {
             class : req.body.class
         }
     }, (err)=>{
-        if(!err){
+        if(err){
             return res.sendStatus(400);
         } else {
             return res.send(200);
@@ -43,23 +43,22 @@ const edit = async (req, res) => {
 };
 
 const display = async (req, res) => {
-    
-    const projects = await Project
-    .find({"_id": req.params.id })
-    .select('_id title summary objective class image');
-    
-    return res.json( {Status: 200, message: projects} );
+
+    if(req.params.id){
+        const projects = await Project
+        .find({"_id": req.params.id })
+        .select('_id title summary objective class image');
+        
+        return res.json( {Status: 200, message: projects} );
+    } else {
+        const projects = await Project
+        .find({})
+        .select('_id title summary objective class image');
+        
+        return res.json( {Status: 200, message: projects} );
+    }
+
 };
-
-// const generalDisplay = async (req, res) => {
-//     const projects = await Project
-
-//     projects
-//     .find()
-//     .select('_id title summary objective class');
-
-//     return res.json( {Status: 200, message: projects} );
-// };
 
 const remove = async (req, res) => {
     await Project.deleteOne({_id: req.params.id}, (err, result)=>{
@@ -71,6 +70,5 @@ module.exports = {
     edit,
     register,
     display,
-    // generalDisplay,
     remove
 }

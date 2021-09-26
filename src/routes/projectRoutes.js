@@ -13,8 +13,6 @@ router.put('/project/edit/:id?',  projectController.edit);
 
 router.get('/project/:id?', projectController.display);
 
-// router.get('/project', projectController.generalDisplay);
-
 router.delete('/project/remove/:id?', projectController.remove)
 
 module.exports = app => app.use("/", router);
