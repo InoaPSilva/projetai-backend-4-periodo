@@ -16,10 +16,10 @@ const projectSchema = new mongoose.Schema({
         require: true,
     },
     
-    image:{
-        type: Schema.Types.ObjectId, 
-        ref:'image'
-    },
+    // image:{
+    //     type: Schema.Types.ObjectId, 
+    //     ref:'image'
+    // },
 
     // user:{
     //     type: Schema.Types.ObjectId, 

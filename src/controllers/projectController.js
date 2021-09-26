@@ -7,7 +7,7 @@ const register = (req, res, next) => {
      
     const newProject = new Project();
     
-    newProject.image = ({name: req.body.name})
+    // newProject.image = ({name: req.body.name})
     
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
@@ -42,8 +42,13 @@ const edit = async (req, res) => {
 
 };
 
-const display = async (req, res) => {
+const remove = async (req, res) => {
+    await Project.deleteOne({"_id": req.params.id}, (err, result)=>{
+       return res.send(err)
+    });
+};
 
+const display = async (req, res) => {
     if(req.params.id){
         const projects = await Project
         .find({"_id": req.params.id })
@@ -60,15 +65,21 @@ const display = async (req, res) => {
 
 };
 
-const remove = async (req, res) => {
-    await Project.deleteOne({_id: req.params.id}, (err, result)=>{
-       return res.send(err)
-    });
+const displayByAccount = async (req, res) => {
+    const id = req._id    
+    const projects = await Project
+        .findOne({"_id": id })
+        .select('_id title summary objective class image');
+
+        return res.json( {Status: 200, message: projects} );
+
 };
 
 module.exports = {
     edit,
     register,
+    remove,
     display,
-    remove
+    displayByAccount
+    
 }

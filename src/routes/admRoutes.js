@@ -16,5 +16,7 @@ router.delete('/guests/remove/:id?', JWT.verifyJwtToken, admController.removeGue
 
 router.put('/guests/edit/:id?', JWT.verifyJwtToken, admController.editGuest)
 
+router.get('/test', JWT.verifyJwtToken)
+
 
 module.exports = app => app.use("/", router);
