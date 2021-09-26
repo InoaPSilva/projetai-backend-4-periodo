@@ -9,7 +9,7 @@ router.get("/auth", (req, res) => {
 
 router.post('/user/register', authController.register)
 
-router.post('/user/login',  authController.login)
+router.post('/user/login', authController.login)
 
 // Falta remoção e edição
 

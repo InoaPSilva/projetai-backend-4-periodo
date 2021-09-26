@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const admController = require('../controllers/admController');
+const JWT = require('../middleware/jwt');
 
 router.get("/auth", (req, res) => {
     res.send("AdmRouting");
@@ -9,11 +10,11 @@ router.get("/auth", (req, res) => {
 
 router.get('/guests/display/:id?', admController.displayGuest)
 
-router.post('/guests/register', admController.registerGuest)
+router.post('/guests/register', JWT.verifyJwtToken, admController.registerGuest)
 
-router.delete('/guests/remove/:id?', admController.removeGuest)
+router.delete('/guests/remove/:id?', JWT.verifyJwtToken, admController.removeGuest)
 
-router.put('/guests/edit/:id?', admController.editGuest)
+router.put('/guests/edit/:id?', JWT.verifyJwtToken, admController.editGuest)
 
 
 module.exports = app => app.use("/", router);
