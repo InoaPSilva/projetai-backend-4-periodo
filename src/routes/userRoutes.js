@@ -19,4 +19,6 @@ router.delete('/user/remove/:id?', JWT.verifyJwtToken, userController.removeUser
 
 router.put('/user/edit/:id?', JWT.verifyJwtToken, userController.editUser)
 
+router.put('user/forgotPass', userController.forgotUser)
+
 module.exports = app => app.use("/", router);

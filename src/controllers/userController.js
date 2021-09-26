@@ -35,7 +35,7 @@ const editUser = async (req, res) => {
             cpf : req.body.cpf,
             name : req.body.name,
             email : req.body.email,
-            password : password
+            password : req.body.password
         }
     }, (err)=>{
         if(err){
@@ -47,8 +47,22 @@ const editUser = async (req, res) => {
 
 };
 
+const forgotUser = async (req, res) => {
+    await newUser.updateOne({},
+        {
+           $set: { password : req.body.password}
+        }, (err)=>{
+            if(err){
+                return res.sendStatus(400);
+            } else {
+                return res.send(200);
+            }
+        });
+};
+
 module.exports = {
     displayUser,
     removeUser,
-    editUser
+    editUser,
+    forgotUser
 }
