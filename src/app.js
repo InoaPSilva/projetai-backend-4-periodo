@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const passport = require('passport');
 const session = require("express-session");
 const flash = require("connect-flash");
-
+const cors = require("cors");
 require('./config/passport');
 
 
@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(cors());
 //session
 app.use(session({
     secret: "projetai",
