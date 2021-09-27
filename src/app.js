@@ -6,6 +6,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const cors = require("cors");
 require('./config/passport');
+require('dotenv').config("../.env");
 
 
 // config
@@ -37,7 +38,7 @@ app.use(express.json());
 //mongoose
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost:27017/db").then(() => {
+mongoose.connect(process.env.MONGO_URL).then(() => {
     console.log("MongoDB Connected!");
 }).catch((err) => {
     console.log("Error trying to connect to MongoDB :( " + err);
@@ -50,8 +51,7 @@ app.use((req, res, next) => {
 });
 
 // Defines the listening door
-const PORT = 8089;
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log("Server ON!");
 });
 
