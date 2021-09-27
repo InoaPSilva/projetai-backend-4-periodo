@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const User = require('../models/category');
 
-const register = (req, res, next) => {};
+const display = (req, res) => { };
 
-const edit = (req, res) => {};
+const register = (req, res, next) => { };
 
-const display = (req, res) => {};
+const edit = (req, res) => { };
 
-const remove = (req, res) => {};
+const remove = (req, res) => { };
 
 module.exports = {
     edit,

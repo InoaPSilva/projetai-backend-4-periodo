@@ -1,34 +1,33 @@
 const mongoose = require('mongoose');
 
 const guestSchema = new mongoose.Schema({
-    
-    name:{
-        type:String,
+
+    name: {
+        type: String,
         required: true,
     },
 
-    role:{
-        type:String,
+    role: {
+        type: String,
         required: true
     },
 
     // pics:{},
 
-    linkedin:{
-        type:String,
-    },
-    
-    github:{
-        type:String,
+    linkedin: {
+        type: String,
     },
 
-    createdAt:{
-        type:Date,
-        default:Date.now(),
-        select:false
+    github: {
+        type: String,
     },
-    
-})
+
+    createdAt: {
+        type: Date,
+        default: Date.now(),
+        select: false
+    }
+});
 
 const guest = mongoose.model('guest', guestSchema);
 

@@ -10,7 +10,7 @@ router.get("/auth", (req, res) => {
 
 router.post('/project/register', JWT.verifyJwtToken, projectController.register);
 
-router.put('/project/edit/:id?',  projectController.edit);
+router.put('/project/edit/:id?', projectController.edit);
 
 router.delete('/project/remove/:id?', JWT.verifyJwtToken, projectController.remove)
 

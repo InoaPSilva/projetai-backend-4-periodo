@@ -2,20 +2,20 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const projectSchema = new mongoose.Schema({
-    title:{
+    title: {
         type: String,
         required: true
     },
-    
-    summary:{
+
+    summary: {
         type: String,
         require: true,
     },
-    objective:{
+    objective: {
         type: String,
         require: true,
     },
-    
+
     // image:{
     //     type: Schema.Types.ObjectId, 
     //     ref:'image'
@@ -27,15 +27,15 @@ const projectSchema = new mongoose.Schema({
     //     required: true
     // },
 
-    class:{
+    class: {
         type: String,
         require: true,
     },
 
-    createdAt:{
-        type:Date,
-        default:Date.now(),
-        select:false
+    createdAt: {
+        type: Date,
+        default: Date.now(),
+        select: false
     }
 
 });
