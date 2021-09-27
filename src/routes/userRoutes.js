@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const JWT = require('../middleware/jwt');
+const jwt = require('../middleware/jwt');
 const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const mailer = require('../config/mailer');
@@ -16,9 +16,9 @@ router.post('/user/login', authController.login)
 
 router.get('/user/display/:id?', userController.displayUser)
 
-router.delete('/user/remove/:id?', JWT.verifyJwtToken, userController.removeUser)
+router.delete('/user/remove/:id?', jwt.verifyJwtToken, userController.removeUser)
 
-router.put('/user/edit/:id?', JWT.verifyJwtToken, userController.editUser)
+router.put('/user/edit/:id?', jwt.verifyJwtToken, userController.editUser)
 
 router.all('/userPassRetrival', mailer.sendEmail, userController.forgotUser)
 
