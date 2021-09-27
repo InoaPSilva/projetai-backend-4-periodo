@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "* teste de push para o repositorio",
   "main": "src/app.js",
+  "start": "./src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +21,7 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "gitmoji-cli": "^4.6.1",

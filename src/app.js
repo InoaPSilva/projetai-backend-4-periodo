@@ -6,8 +6,6 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const cors = require("cors");
 require('./config/passport');
-require('dotenv').config("../.env");
-
 
 // config
 app.use(express.json());
@@ -15,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
+
 //session
 app.use(session({
     secret: "projetai",
@@ -38,7 +37,7 @@ app.use(express.json());
 //mongoose
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.MONGO_URL).then(() => {
+mongoose.connect("mongodb://localhost:27017/db").then(() => {
     console.log("MongoDB Connected!");
 }).catch((err) => {
     console.log("Error trying to connect to MongoDB :( " + err);
@@ -51,7 +50,8 @@ app.use((req, res, next) => {
 });
 
 // Defines the listening door
-app.listen(process.env.PORT, () => {
+const PORT = 8089;
+app.listen(PORT, () => {
     console.log("Server ON!");
 });
 
