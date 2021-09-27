@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "* teste de push para o repositorio",
   "main": "src/app.js",
-  "start": "./src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./src/app.js"
   },
   "repository": {
     "type": "git",
