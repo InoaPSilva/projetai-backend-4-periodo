@@ -37,7 +37,7 @@ app.use(express.json());
 //mongoose
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb+srv://user:DEVBOX@clustername.mongodb.net/test?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true").then(() => {
+mongoose.connect("mongodb+srv://user:DEVBOX@cluster0.gsd6c.mongodb.net/db?retryWrites=true&w=majority").then(() => {
     console.log("MongoDB Connected!");
 }).catch((err) => {
     console.log("Error trying to connect to MongoDB :( " + err);
