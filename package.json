@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "* teste de push para o repositorio",
   "main": "src/app.js",
-  "start": "./src/app.js",
+  "start": "nodemon src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
