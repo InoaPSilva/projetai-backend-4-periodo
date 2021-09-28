@@ -39,7 +39,7 @@ app.use(express.json());
 mongoose.Promise = global.Promise;
 
 mongoose.connect(process.env.URL_MONGO).then(() => {
-    console.log("MongoDB Connected! :D");
+    console.log(`MongoDB Connected! on this url: ${process.env.URL_MONGO}`);
 }).catch((err) => {
     console.log("Error trying to connect to MongoDB :( " + err);
 });

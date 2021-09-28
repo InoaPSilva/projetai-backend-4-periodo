@@ -64,9 +64,14 @@ const forgotUser = async (req, res) => {
     }
 };
 
+const tokenTest = (req, res) => {
+    res.send(`Token: ${req.works} \n Msg: ${req.msg}`);
+};
+
 module.exports = {
     displayUser,
     removeUser,
     editUser,
-    forgotUser
+    forgotUser,
+    tokenTest
 }

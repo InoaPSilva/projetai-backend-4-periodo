@@ -22,6 +22,6 @@ router.put('/user/edit/:id?', jwt.verifyJwtToken, userController.editUser)
 
 router.all('/userPassRetrival', mailer.sendEmail, userController.forgotUser)
 
-router.post('/tokenTest', jwt.verifyJwtToken );
+router.get('/tokenTest', jwt.verifyJwtToken, userController.tokenTest );
 
 module.exports = app => app.use("/", router);
