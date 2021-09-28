@@ -37,7 +37,7 @@ app.use(express.json());
 //mongoose
 mongoose.Promise = global.Promise;
 
-mongoose.connect("mongodb://localhost:27017/db" || process.env.MONGO_URL).then(() => {
+mongoose.connect("mongodb+srv://user:DEVBOX@clustername.mongodb.net/test?retryWrites=true&w=majority&useNewUrlParser=true&useUnifiedTopology=true").then(() => {
     console.log("MongoDB Connected!");
 }).catch((err) => {
     console.log("Error trying to connect to MongoDB :( " + err);
