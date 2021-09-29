@@ -65,7 +65,7 @@ const forgotUser = async (req, res) => {
 };
 
 const tokenTest = (req, res) => {
-    res.send(`Token: ${req.works} \n Msg: ${req.msg}`);
+    res.send({Token: req.works, Msg: req.msg});
 };
 
 module.exports = {
