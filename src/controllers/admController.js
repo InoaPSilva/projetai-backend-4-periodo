@@ -1,5 +1,5 @@
-// const mongoose = require('mongoose');
 const Guest = require('../models/guest');
+// const mongoose = require('mongoose');
 
 // display Guests by id
 const displayGuest = async (req, res, next) => {
@@ -14,7 +14,6 @@ const displayGuest = async (req, res, next) => {
             .select('_id name role linkedin github ');
         return res.json({ Status: 200, message: Guests });
     }
-
 };
 
 // register user
@@ -71,4 +70,4 @@ module.exports = {
     displayGuest,
     removeGuest,
     editGuest
-}
+};

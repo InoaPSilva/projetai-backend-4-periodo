@@ -12,7 +12,7 @@ router.post('/project/register', jwt.verifyJwtToken, projectController.register)
 
 router.put('/project/edit/:id?', projectController.edit);
 
-router.delete('/project/remove/:id?', jwt.verifyJwtToken, projectController.remove)
+router.delete('/project/remove/:id?', jwt.verifyJwtToken, projectController.remove);
 
 router.get('/project/:id?', projectController.display);
 

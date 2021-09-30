@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
 const User = require('../models/user');
+// const mongoose = require('mongoose');
 
 // display Users by id
 const displayUser = async (req, res, next) => {
@@ -65,7 +65,7 @@ const forgotUser = async (req, res) => {
 };
 
 const tokenTest = (req, res) => {
-    res.send({Token: req.works, Msg: req.msg});
+    res.send({ Token: req.works, Msg: req.msg });
 };
 
 module.exports = {
@@ -74,4 +74,4 @@ module.exports = {
     editUser,
     forgotUser,
     tokenTest
-}
+};

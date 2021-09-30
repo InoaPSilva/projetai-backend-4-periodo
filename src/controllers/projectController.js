@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const passport = require('passport');
 const Project = require('../models/project');
+// const mongoose = require('mongoose');
+// const passport = require('passport');
 
 const display = async (req, res) => {
     if (req.params.id) {
@@ -78,4 +78,4 @@ module.exports = {
     remove,
     display,
     displayByAccount
-}
+};

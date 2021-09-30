@@ -60,7 +60,6 @@ userSchema.pre('save', function (next) {
     });
 });
 
-
 // Methods / verify user password
 userSchema.methods.verifyPassword = function (password) {
     return bcrypt.compareSync(password, this.password);

@@ -1,6 +1,6 @@
-// const mongoose = require('mongoose');
 const passport = require('passport');
 const User = require('../models/user');
+// const mongoose = require('mongoose');
 
 // register user
 const register = (req, res, next) => {
@@ -41,4 +41,4 @@ const login = (req, res, next) => {
 module.exports = {
     login,
     register
-}
+};

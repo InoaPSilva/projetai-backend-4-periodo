@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 // Defines the listening door
 app.listen(process.env.PORT, ()=>{
     console.log(`SERVER ON! ON ${process.env.PORT}`);
-})
+});
 
 
 require('./routes/userRoutes')(app);

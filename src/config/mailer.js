@@ -39,6 +39,6 @@ const sendEmail = async (req, res, next) => {
         console.log("Now let's PUT");
         return next();
     }
-}
+};
 
-module.exports = { sendEmail }
+module.exports = { sendEmail };
