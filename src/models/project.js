@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
 const projectSchema = new mongoose.Schema({
     title: {
@@ -16,12 +15,17 @@ const projectSchema = new mongoose.Schema({
         require: true,
     },
 
+    // category: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'category'
+    // }],
+
+    user:[],
+
     // image:{
     //     type: Schema.Types.ObjectId, 
     //     ref:'image'
     // },
-
-    user:[],
 
     createdAt: {
         type: Date,
