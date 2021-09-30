@@ -62,11 +62,8 @@ const remove = async (req, res) => {
 };
 
 const displayByAccount = async (req, res) => {
-    const id = req._id
     const projects = await Project
-        .findOne({ "_id": id })
-        .select('_id title summary objective class image');
-
+        .findOne({ "user[0]._id": req._id });
     return res.json({ Status: 200, message: projects });
 };
 
