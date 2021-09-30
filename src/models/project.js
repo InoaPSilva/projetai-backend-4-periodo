@@ -21,16 +21,7 @@ const projectSchema = new mongoose.Schema({
     //     ref:'image'
     // },
 
-    // user:{
-    //     type: Schema.Types.ObjectId, 
-    //     ref:'user',
-    //     required: true
-    // },
-
-    class: {
-        type: String,
-        require: true,
-    },
+    user:[],
 
     createdAt: {
         type: Date,

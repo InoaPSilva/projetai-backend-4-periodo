@@ -1,35 +1,34 @@
 const Project = require('../models/project');
-// const mongoose = require('mongoose');
-// const passport = require('passport');
+const user = require('../models/user');
 
 const display = async (req, res) => {
     if (req.params.id) {
         const projects = await Project
             .find({ "_id": req.params.id })
-            .select('_id title summary objective class image');
+            .select('_id title summary objective class image user');
 
         return res.json({ Status: 200, message: projects });
     } else {
         const projects = await Project
             .find({})
-            .select('_id title summary objective class image');
+            .select('_id title summary objective class image user');
 
         return res.json({ Status: 200, message: projects });
     }
 };
 
 // Register new projects
-const register = (req, res, next) => {
+const register = async(req, res, next) => {
 
     const newProject = new Project();
-
     // newProject.image = ({name: req.body.name})
-
+    req.user = await user.find({"_id":req._id}, {__v: 0 , password: false});
+    console.log(req.user);
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
     newProject.objective = req.body.objective;
-    newProject.class = req.body.class;
-
+    newProject.user.push(req.user[0]);
+    console.log(newProject.user);
     newProject.save((err) => {
         if (!err) {
             res.sendStatus(200);
@@ -46,7 +45,6 @@ const edit = async (req, res) => {
                 title: req.body.title,
                 summary: req.body.summary,
                 objective: req.body.objective,
-                class: req.body.class
             }
         }, (err) => {
             if (err) {

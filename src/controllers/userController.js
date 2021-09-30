@@ -5,14 +5,13 @@ const User = require('../models/user');
 const displayUser = async (req, res, next) => {
     if (req.params.id) {
         const Users = await User
-            .find({ "_id": req.params.id })
-            .select('_id enrollment cpf name email password ');
+            .findOne({ "_id": req.params.id }, {__v: 0 , password: false});
         return res.json({ Status: 200, message: Users });
     } else {
         const Users = await User
-            .find({})
-            .select('_id enrollment cpf name email password');
+            .find({}, {__v: 0 , password: false});
         return res.json({ Status: 200, message: Users });
+
     }
 };
 
@@ -25,7 +24,8 @@ const editUser = async (req, res) => {
                 cpf: req.body.cpf,
                 name: req.body.name,
                 email: req.body.email,
-                password: req.body.password
+                password: req.body.password,
+                class: req.body.class
             }
         }, (err) => {
             if (err) {
