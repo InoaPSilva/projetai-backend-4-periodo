@@ -1,3 +1,4 @@
+const category = require('../models/category');
 const Project = require('../models/project');
 const user = require('../models/user');
 
@@ -23,12 +24,13 @@ const register = async(req, res, next) => {
     const newProject = new Project();
     // newProject.image = ({name: req.body.name})
     req.user = await user.find({"_id":req._id}, {__v: 0 , password: false});
-    console.log(req.user);
+
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
     newProject.objective = req.body.objective;
+    newProject.category = req.body.category 
     newProject.user.push(req.user[0]);
-    console.log(newProject.user);
+
     newProject.save((err) => {
         if (!err) {
             res.sendStatus(200);

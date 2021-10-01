@@ -15,10 +15,10 @@ const projectSchema = new mongoose.Schema({
         require: true,
     },
 
-    // category: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'category'
-    // }],
+    category: [{
+        type: Schema.Types.ObjectId,
+        ref: 'category'
+    }],
 
     user:[],
 

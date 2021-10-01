@@ -14,8 +14,7 @@ const verifyJwtToken = (req, res, next) => {
                 return res.status(500).send({ auth: false, message: 'Token de autenticação errado' });
             } else {
                 req._id = decoded._id;
-                req.works = true;
-                req.msg = "works"
+                req.logged = true;
                 next();
             }
         });
