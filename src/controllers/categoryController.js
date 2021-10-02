@@ -1,10 +1,8 @@
-const mongoose = require('mongoose');
-const passport = require('passport');
 const category = require('../models/category');
 
 const register = (req, res, next) => {
     const newCategory = new category();
-    newCategory.name = req.body.name;
+    newCategory.title = req.body.title;
 
     newCategory.save((err) => {
         if (!err) {

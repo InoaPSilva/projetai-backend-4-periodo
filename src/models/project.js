@@ -16,8 +16,9 @@ const projectSchema = new mongoose.Schema({
     },
 
     category: [{
-        type: Schema.Types.ObjectId,
-        ref: 'category'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'category',
+        required: true
     }],
 
     user:[],
