@@ -6,13 +6,13 @@ const display = async (req, res) => {
     if (req.params.id) {
         const projects = await Project
             .find({ "_id": req.params.id })
-            .select('_id title summary objective class image user');
+            .select('_id title summary objective class image user category');
 
         return res.json({ Status: 200, message: projects });
     } else {
         const projects = await Project
             .find({})
-            .select('_id title summary objective class image user');
+            .select('_id title summary objective class image user category');
 
         return res.json({ Status: 200, message: projects });
     }
@@ -28,7 +28,7 @@ const register = async(req, res, next) => {
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
     newProject.objective = req.body.objective;
-    newProject.category = req.body.category 
+    newProject.category = req.body.category; 
     newProject.user.push(req.user[0]);
 
     newProject.save((err) => {
