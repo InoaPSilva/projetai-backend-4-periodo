@@ -6,13 +6,13 @@ const display = async (req, res) => {
     if (req.params.id) {
         const projects = await Project
             .find({ "_id": req.params.id })
-            .select('_id title summary objective class image user category');
+            .select('_id title summary objective class icon user category');
 
         return res.json({ Status: 200, message: projects });
     } else {
         const projects = await Project
             .find({})
-            .select('_id title summary objective class image user category');
+            .select('_id title summary objective class icon user category');
 
         return res.json({ Status: 200, message: projects });
     }
