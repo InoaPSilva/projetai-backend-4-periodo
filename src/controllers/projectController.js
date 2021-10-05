@@ -29,7 +29,7 @@ const register = async(req, res, next) => {
     newProject.banner = req.uploadUrl[1];
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
-    // newProject.category = req.body.category;
+    newProject.category = req.body.category;
     newProject.objective = req.body.objective;
     newProject.user.push(req.user[0]);
 

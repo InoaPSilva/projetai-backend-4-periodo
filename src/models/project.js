@@ -15,9 +15,7 @@ const projectSchema = new mongoose.Schema({
         require: true,
     },
 
-    category: {
-        Type: String,
-    },
+    category: String,
 
     user:[],
 
