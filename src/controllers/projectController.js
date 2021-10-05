@@ -1,4 +1,3 @@
-const category = require('../models/category');
 const Project = require('../models/project');
 const user = require('../models/user');
 
@@ -30,8 +29,8 @@ const register = async(req, res, next) => {
     // newProject.banner = req.uploadUrl[1];
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
+    newProject.category = req.body.category;
     newProject.objective = req.body.objective;
-    // newProject.category = req.body.category;
     newProject.user.push(req.user[0]);
 
     newProject.save((err) => {

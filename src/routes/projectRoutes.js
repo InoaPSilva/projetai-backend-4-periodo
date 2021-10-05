@@ -5,7 +5,6 @@ const multerConfigs = require("../config/multer");
 
 const jwt = require('../middleware/jwt');
 const accountVerifier = require('../middleware/accountVerifier');
-const categoryController = require('../controllers/categoryController');
 const projectController = require('../controllers/projectController');
 const fileController = require('../controllers/fileController');
 
@@ -26,11 +25,6 @@ router.delete('/project/remove/:id?', jwt.verifyJwtToken, projectController.remo
 router.get('/project/:id?', projectController.display);
 
 router.get('/projectsByUser', jwt.verifyJwtToken, projectController.displayByAccount);
-
-// Category
-router.post('/category/register', jwt.verifyJwtToken, accountVerifier.verifyAccountType, categoryController.register);
-
-router.post('/category/remove', jwt.verifyJwtToken, accountVerifier.verifyAccountType, categoryController.remove);
 
 // Test route
 router.post('/file',  multer(multerConfigs).array('files', 2), (req, res) =>{
