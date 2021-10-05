@@ -23,10 +23,9 @@ const projectSchema = new mongoose.Schema({
 
     user:[],
 
-    // image:{
-    //     type: Schema.Types.ObjectId, 
-    //     ref:'image'
-    // },
+    icon: String,
+    
+    // banner: String,
 
     createdAt: {
         type: Date,

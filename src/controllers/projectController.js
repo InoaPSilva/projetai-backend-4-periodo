@@ -21,14 +21,17 @@ const display = async (req, res) => {
 // Register new projects
 const register = async(req, res, next) => {
 
+
+    
     const newProject = new Project();
-    // newProject.image = ({name: req.body.name})
     req.user = await user.find({"_id":req._id}, {__v: 0 , password: false});
 
+    newProject.icon = req.uploadUrl;
+    // newProject.banner = req.uploadUrl[1];
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
     newProject.objective = req.body.objective;
-    newProject.category = req.body.category; 
+    // newProject.category = req.body.category;
     newProject.user.push(req.user[0]);
 
     newProject.save((err) => {
