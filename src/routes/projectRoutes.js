@@ -18,9 +18,9 @@ const fileController = require('../controllers/fileController');
 // projects
 router.post('/project/register', jwt.verifyJwtToken, multer(multerConfigs).array('files', 2), fileController.registerMultiple, projectController.register);
 
-router.put('/project/edit/:id?', projectController.edit);
+router.put('/project/edit/:id?',jwt.verifyJwtToken, accountVerifier.canEditProject, projectController.edit);
 
-router.delete('/project/remove/:id?', jwt.verifyJwtToken, projectController.remove);
+router.delete('/project/remove/:id?', jwt.verifyJwtToken, accountVerifier.canEditProject, projectController.remove);
 
 router.get('/project/:id?', projectController.display);
 
