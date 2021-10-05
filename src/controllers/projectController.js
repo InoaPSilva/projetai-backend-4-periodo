@@ -24,12 +24,12 @@ const register = async(req, res, next) => {
     
     const newProject = new Project();
     req.user = await user.find({"_id":req._id}, {__v: 0 , password: false});
-
-    newProject.icon = req.uploadUrl;
-    // newProject.banner = req.uploadUrl[1];
+    
+    newProject.icon = req.uploadUrl[0];
+    newProject.banner = req.uploadUrl[1];
     newProject.title = req.body.title;
     newProject.summary = req.body.summary;
-    newProject.category = req.body.category;
+    // newProject.category = req.body.category;
     newProject.objective = req.body.objective;
     newProject.user.push(req.user[0]);
 

@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const aws = require("aws-sdk");
-const { promisify } = require("util");
 
 const imageSchema = new mongoose.Schema({
     originalname: String,

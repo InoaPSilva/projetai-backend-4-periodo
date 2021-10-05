@@ -16,7 +16,7 @@ const fileController = require('../controllers/fileController');
 
 
 // projects
-router.post('/project/register', jwt.verifyJwtToken, multer(multerConfigs).single('files'), fileController.register, projectController.register);
+router.post('/project/register', jwt.verifyJwtToken, multer(multerConfigs).array('files', 2), fileController.registerMultiple, projectController.register);
 
 router.put('/project/edit/:id?', projectController.edit);
 
@@ -27,12 +27,10 @@ router.get('/project/:id?', projectController.display);
 router.get('/projectsByUser', jwt.verifyJwtToken, projectController.displayByAccount);
 
 // Test route
-router.post('/file',  multer(multerConfigs).array('files', 2), (req, res) =>{
+router.post('/file',  multer(multerConfigs).array('files', 2), fileController.registerMultiple, (req, res) =>{
     
     // Dois arquivos não podem ser postos no log
-    console.log(req.files);
-    
-    return res.json({works:true, files:req.file})
+    return res.json({works:true, files:req.files})
 });
 
 module.exports = app => app.use("/", router);

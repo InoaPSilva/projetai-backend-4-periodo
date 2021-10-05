@@ -21,9 +21,9 @@ const projectSchema = new mongoose.Schema({
 
     user:[],
 
-    icon: String,
+    icon: [],
     
-    // banner: String,
+    banner: [],
 
     createdAt: {
         type: Date,

@@ -12,7 +12,7 @@ const guestSchema = new mongoose.Schema({
         required: true
     },
 
-    profilePic: String,
+    profilePic:[],
 
     linkedin: {
         type: String,

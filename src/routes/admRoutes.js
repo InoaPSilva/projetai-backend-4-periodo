@@ -2,8 +2,8 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 
-const fileController = require('../controllers/fileController');
-const multerConfigs = require('../config/multer');
+const fileController = require("../controllers/fileController");
+const multerConfigs = require("../config/multer");
 const admController = require("../controllers/admController");
 const accountVerifier = require("../middleware/accountVerifier");
 const jwt = require("../middleware/jwt");
@@ -18,8 +18,8 @@ router.post(
   "/guests/register",
   jwt.verifyJwtToken,
   accountVerifier.verifyAccountType,
-  multer(multerConfigs).single("files"),
-  fileController.register,
+  multer(multerConfigs).single("file"),
+  fileController.registerSingle,
   admController.registerGuest
 );
 

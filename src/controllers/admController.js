@@ -19,12 +19,16 @@ const displayGuest = async (req, res, next) => {
 // register user
 const registerGuest = (req, res, next) => {
     // Needed informations to generate a user
+    console.log(req.uploadUrl);
     const newGuest = new Guest();
     newGuest.name = req.body.name;
-    newGuest.profilePic = req.uploadUrl;
     newGuest.role = req.body.role;
+    newGuest.profilePic = req.uploadUrl;
+
     newGuest.linkedin = req.body.linkedin;
     newGuest.github = req.body.github;
+ 
+
 
     // catching error
     newGuest.save((err) => {
