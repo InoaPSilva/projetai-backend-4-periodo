@@ -2,7 +2,6 @@
 
 # compiled output
 /dist
-/tmp
 /out-tsc
 
 # dependencies
@@ -39,8 +38,7 @@ testem.log
 *.tar
 *.tar.gz
 *.png
-*.jpeg
-*jpg
+
 # e2e
 /e2e/*.js
 /e2e/*.map

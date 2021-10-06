@@ -4,6 +4,8 @@ const crypto = require("crypto");
 const aws = require("aws-sdk");
 const multerS3 = require("multer-s3");
 
+const MAX_SIZE_TWO_MEGABYTES = 2 * 1024 * 1024;
+
 const storageTypes = {
   local: multer.diskStorage({
     destination: (req, file, cb) => {
@@ -40,7 +42,7 @@ module.exports = {
   dest: path.resolve(__dirname, "..", "..", "tmp", "uploads"),
   storage: storageTypes[process.env.STORAGE_TYPE],
   limits: {
-    fileSize: 2 * 1024 * 1024
+    fileSize: MAX_SIZE_TWO_MEGABYTES
   },
   fileFilter: (req, file, cb) => {
     const allowedMimes = [

@@ -35,6 +35,7 @@
     "nodemailer": "^6.6.5",
     "nodemon": "^2.0.13",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "promisify": "0.0.3"
   }
 }

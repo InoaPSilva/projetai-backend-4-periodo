@@ -1,4 +1,8 @@
 const file = require("../models/uploadImages");
+const fs = require("fs");
+const path = require("path");
+const { promisify } = require("util");
+
 
 const registerMultiple = async (req, res, next) => {
   req.uploadUrl = [];
@@ -14,16 +18,15 @@ const registerMultiple = async (req, res, next) => {
       if (!err) {
         req.uploadUrl.push(newFile.url);
         console.log(req.uploadUrl);
-        
+
       } else {
         res.send(err);
         next();
       }
     });
-    
   });
-  next();
 
+  next();
 };
 
 const registerSingle = async (req, res, next) => {
@@ -41,13 +44,36 @@ const registerSingle = async (req, res, next) => {
       next();
     } else {
       res.send(err);
+
       next();
     }
   });
+};
 
+// adicionar remoção - mongoose
+const removeFile = async (req, res) => {
+
+  if (process.env.STORAGE_TYPE === "s3") {
+
+    return s3
+      .deleteObject({
+        Bucket: process.env.BUCKET_NAME,
+        key: req.params.key
+      })
+      .promise().then((response) => {
+        console.log(response.status);
+      }).catch((response) => {
+        console.log(response.status);
+      });
+  } else {
+    return promisify(fs.unlink)(
+      path.resolve(__dirname, "..", "..", "tmp", "uploads", req.params.key)
+    );
+  }
 };
 
 module.exports = {
   registerMultiple,
-  registerSingle
+  registerSingle,
+  removeFile
 };
