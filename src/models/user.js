@@ -15,12 +15,6 @@ const userSchema = new mongoose.Schema({
         require: true
     },
 
-    cpf: {
-        type: String,
-        unique: true,
-        require: true
-    },
-
     name: {
         type: String,
         require: true

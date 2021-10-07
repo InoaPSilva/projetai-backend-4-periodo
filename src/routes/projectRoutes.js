@@ -26,6 +26,10 @@ router.get('/project/:id?', projectController.display);
 
 router.get('/projectsByUser', jwt.verifyJwtToken, projectController.displayByAccount);
 
+router.get('/projectsByCate/:cate?', jwt.verifyJwtToken, projectController.displayByCategory);
+
+
+
 // Test route
 router.get('/file', fileController.getFiles);
 
