@@ -27,10 +27,8 @@ router.get('/project/:id?', projectController.display);
 router.get('/projectsByUser', jwt.verifyJwtToken, projectController.displayByAccount);
 
 // Test route
-router.delete('/file/:key?', fileController.removeFile, (req, res) => {
+router.get('/file', fileController.getFiles);
 
-    // Dois arquivos não podem ser postos no log
-    return res.json({ works: true, files: req.files });
-});
+router.delete('/fileDel/:id?', fileController.deleteFile);
 
 module.exports = app => app.use("/", router);
