@@ -65,7 +65,7 @@ const forgotUser = async (req, res) => {
 };
 
 const tokenTest = (req, res) => {
-    res.send({ Token: req.logged, Msg: "Works..." });
+    res.send({ auth: req.logged, message: "Works..." });
 };
 
 module.exports = {
