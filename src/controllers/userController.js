@@ -5,7 +5,7 @@ const User = require('../models/user');
 const displayUser = async (req, res, next) => {
     if (req.params.id) {
         const Users = await User
-            .findOne({ "_id": req.params.id }, {__v: 0 , password: false});
+            .findOne({ "_id": req.params.id }, {__v: 0 });
         return res.json({ Status: 200, message: Users });
     } else {
         const Users = await User
@@ -51,7 +51,7 @@ const forgotUser = async (req, res) => {
     console.log(req.email);
     if (req.method === "PUT") {
         newUser = await User
-            .updateOne({ email: req.body.email },
+            .updateOne({ email: req.email },
                 {
                     $set: { password: req.body.password }
                 }, (err) => {

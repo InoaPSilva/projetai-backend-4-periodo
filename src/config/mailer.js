@@ -37,7 +37,8 @@ const sendEmail = async (req, res, next) => {
         });
     } else {
         console.log("Now let's PUT");
-        return next();
+        req.email;
+        next();
     }
 };
 

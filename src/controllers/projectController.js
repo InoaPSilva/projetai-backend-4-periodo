@@ -17,6 +17,18 @@ const display = async (req, res) => {
     }
 };
 
+const displayByAccount = async (req, res) => {
+    const projects = await Project
+        .findOne({ "user[0]._id": req._id });
+    return res.json({ Status: 200, message: projects });
+};
+
+const displayByCategory = async (req, res) => {
+    const projects = await Project
+        .findOne({ "category": req.params.cate });
+    return res.json({ Status: 200, message: projects });
+};
+
 // Register new projects
 const register = async(req, res, next) => {
 
@@ -65,16 +77,13 @@ const remove = async (req, res) => {
     });
 };
 
-const displayByAccount = async (req, res) => {
-    const projects = await Project
-        .findOne({ "user[0]._id": req._id });
-    return res.json({ Status: 200, message: projects });
-};
+
 
 module.exports = {
     edit,
     register,
     remove,
     display,
-    displayByAccount
+    displayByAccount,
+    displayByCategory
 };
