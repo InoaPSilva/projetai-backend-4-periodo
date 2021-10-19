@@ -20,7 +20,6 @@ const imageSchema = new mongoose.Schema({
 imageSchema.pre("save", function () {
   if (!this.url) {
     this.url = `https://${process.env.BUCKET_NAME}.s3.${process.env.AWS_DEFAULT_REGION}.amazonaws.com/${this.key}`;
-
   }
 });
 

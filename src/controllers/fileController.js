@@ -55,8 +55,7 @@ const deleteFile = async (req, res) => {
   const post = await file.findById(req.params.id);
 
   await post.remove();
-  return res.sendStatus(200)
-
+  return res.sendStatus(200);
 };
 
 module.exports = {

@@ -1,36 +1,35 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({
-    title: {
-        type: String,
-        required: true
-    },
+  title: {
+    type: String,
+    required: true,
+  },
 
-    summary: {
-        type: String,
-        require: true,
-    },
-    objective: {
-        type: String,
-        require: true,
-    },
+  summary: {
+    type: String,
+    require: true,
+  },
+  objective: {
+    type: String,
+    require: true,
+  },
 
-    category: String,
+  category: String,
 
-    user:[],
+  user: [],
 
-    icon: [],
-    
-    banner: [],
+  icon: [],
 
-    createdAt: {
-        type: Date,
-        default: Date.now(),
-        select: false
-    }
+  banner: [],
 
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    select: false,
+  },
 });
 
-const project = mongoose.model('project', projectSchema);
+const project = mongoose.model("project", projectSchema);
 
 module.exports = project;
