@@ -8,16 +8,16 @@ const MAX_SIZE_TWO_MEGABYTES = 2 * 1024 * 1024;
 
 const storageTypes = {
   local: multer.diskStorage({
-    destination: (req, file, cb) => {
-      cb(null, path.resolve(__dirname, "..", "..", "tmp", "uploads"));
+    destination: (req, file, callback) => {
+      callback(null, path.resolve(__dirname, "..", "..", "tmp", "uploads")); //folder walk - locally saved files
     },
-    filename: (req, file, cb) => {
+    filename: (req, file, callback) => {
       crypto.randomBytes(16, (err, hash) => {
-        if (err) cb(err);
-
+        if (err) callback(err);
+        // taking the key from the image and joining it with its name and format
         file.key = `${hash.toString("hex")}-${file.originalname}`;
 
-        cb(null, file.key);
+        callback(null, file.key);
       });
     },
   }),
@@ -26,13 +26,13 @@ const storageTypes = {
     bucket: process.env.BUCKET_NAME,
     contentType: multerS3.AUTO_CONTENT_TYPE,
     acl: "public-read",
-    key: (req, file, cb) => {
+    key: (req, file, callback) => {
       crypto.randomBytes(16, (err, hash) => {
-        if (err) cb(err);
-
+        if (err) callback(err);
+        // taking the key from the image and joining it with its name and format
         const fileName = `${hash.toString("hex")}-${file.originalname}`;
 
-        cb(null, fileName);
+        callback(null, fileName);
       });
     },
   }),
@@ -45,6 +45,7 @@ module.exports = {
     fileSize: MAX_SIZE_TWO_MEGABYTES,
   },
   fileFilter: (req, file, cb) => {
+    // allowed formats for submission
     const allowedMimes = [
       "image/jpeg",
       "image/pjpeg",
@@ -52,10 +53,11 @@ module.exports = {
       "image/gif",
     ];
 
+    // checking allowed formats
     if (allowedMimes.includes(file.mimetype)) {
-      cb(null, true);
+      callback(null, true);
     } else {
-      cb(new Error("Invalid file type."));
+      callback(new Error("Invalid file type."));
     }
   },
 };
