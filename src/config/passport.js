@@ -1,6 +1,5 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-// const mongoose = require("mongoose");
 
 let User = require("../models/user");
 // The local authentication strategy authenticates users using a username and password.

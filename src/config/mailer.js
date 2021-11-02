@@ -23,7 +23,7 @@ const sendEmail = async (req, res, next) => {
 
     // E-mail content that will be sent to the user to recover password
     const emailContent = {
-      from: `"DevBox", ${ process.env.MAILER_EMAIL }`,
+      from: `"DevBox+", ${ process.env.MAILER_EMAIL }`,
       to: req.email,
       subject: "Recuperação de senha",
       text:

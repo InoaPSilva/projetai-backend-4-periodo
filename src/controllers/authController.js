@@ -1,6 +1,5 @@
 const passport = require("passport");
 const User = require("../models/user");
-// const mongoose = require('mongoose');
 
 // register user
 const register = (req, res, next) => {
@@ -12,7 +11,7 @@ const register = (req, res, next) => {
   user.email = req.body.email;
   user.password = req.body.password;
 
-  // catching error
+  // catching error if exists
   user.save((err) => {
     if (!err) {
       res.sendStatus(200);

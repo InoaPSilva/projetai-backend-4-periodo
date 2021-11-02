@@ -1,5 +1,4 @@
 const Guest = require("../models/guest");
-// const mongoose = require('mongoose');
 
 // display Guests by id
 const displayGuest = async (req, res, next) => {
@@ -15,7 +14,6 @@ const displayGuest = async (req, res, next) => {
     return res.json({ Status: 200, message: Guests });
   }
 };
-
 // register user
 const registerGuest = (req, res, next) => {
   // Needed informations to generate a user
@@ -24,10 +22,8 @@ const registerGuest = (req, res, next) => {
   newGuest.name = req.body.name;
   newGuest.role = req.body.role;
   newGuest.profilePic = req.uploadUrl;
-
   newGuest.linkedin = req.body.linkedin;
   newGuest.github = req.body.github;
-
   // catching error
   newGuest.save((err) => {
     if (!err) {
@@ -37,7 +33,6 @@ const registerGuest = (req, res, next) => {
     }
   });
 };
-
 // update guest by id
 const editGuest = async (req, res) => {
   await Guest.updateOne(
@@ -59,7 +54,6 @@ const editGuest = async (req, res) => {
     }
   );
 };
-
 // delete guest by id
 const removeGuest = async (req, res) => {
   await Guest.deleteOne({ _id: req.params.id }, (err, result) => {

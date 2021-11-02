@@ -14,6 +14,20 @@ const fileController = require("../controllers/fileController");
 // });
 
 // projects
+router.get("/project/:id?", projectController.display);
+
+router.get(
+  "/projectsByUser",
+  jwt.verifyJwtToken,
+  projectController.displayByAccount
+);
+
+router.get(
+  "/projectsByCate/:cate?",
+  jwt.verifyJwtToken,
+  projectController.displayByAccount
+);
+
 router.post(
   "/project/register",
   jwt.verifyJwtToken,
@@ -34,20 +48,6 @@ router.delete(
   jwt.verifyJwtToken,
   accountVerifier.canEditProject,
   projectController.remove
-);
-
-router.get("/project/:id?", projectController.display);
-
-router.get(
-  "/projectsByUser",
-  jwt.verifyJwtToken,
-  projectController.displayByAccount
-);
-
-router.get(
-  "/projectsByCate/:cate?",
-  jwt.verifyJwtToken,
-  projectController.displayByAccount
 );
 
 // Test route
