@@ -5,12 +5,14 @@ const passport = require("passport");
 const session = require("express-session");
 const flash = require("connect-flash");
 const cors = require("cors");
+const path = require("path");
 require("dotenv").config("../.env");
 require("./config/passport");
 
 // config
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/files', express.static(path.join(__dirname , 'tmp/uploads')));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
