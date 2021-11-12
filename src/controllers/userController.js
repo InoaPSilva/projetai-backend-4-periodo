@@ -1,5 +1,4 @@
 const User = require("../models/user");
-// const mongoose = require('mongoose');
 
 // display Users by id
 const displayUser = async (req, res, next) => {
