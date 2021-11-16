@@ -30,8 +30,8 @@ const displayByCategory = async (req, res) => {
 // Register new projects
 const register = async (req, res, next) => {
   const newProject = new Project();
-  req.user = await user.find({ _id: req._id }, { __v: 0, password: false });
 
+  req.user = await user.find({ _id: req._id }, { __v: 0, password: false });
   newProject.icon = req.uploadUrl[0];
   newProject.banner = req.uploadUrl[1];
   newProject.title = req.body.title;
@@ -39,7 +39,7 @@ const register = async (req, res, next) => {
   newProject.category = req.body.category;
   newProject.objective = req.body.objective;
   newProject.user.push(req.user[0]);
-
+try{
   newProject.save((err) => {
     if (!err) {
       res.sendStatus(200);
@@ -47,33 +47,42 @@ const register = async (req, res, next) => {
       return next(err);
     }
   });
+} catch {
+  console.log("error");
+
+}
 };
 
 const edit = async (req, res) => {
-  await Project.updateOne(
-    { _id: req.params.id },
-    {
-      $set: {
-        title: req.body.title,
-        summary: req.body.summary,
-        objective: req.body.objective,
+  try{
+    await Project.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          title: req.body.title,
+          summary: req.body.summary,
+          objective: req.body.objective,
+        },
       },
-    },
-    (err) => {
-      if (err) {
-        return res.sendStatus(400);
-      } else {
-        return res.send(200);
-      }
-    }
-  );
+    );
+    res.sendStatus(200)
+  } catch(error){
+    console.log("dont work");
+  }
+
+
+
 };
 
-const remove = async (req, res) => {
-  await Project.deleteOne({ _id: req.params.id }, (err, result) => {
-    return res.send(err);
-  });
-};
+const remove = async(req, res) => {
+  try{
+    await Project.deleteOne({ _id: req.params.id })
+    res.sendStatus(200)
+  } 
+  catch(error){
+    console.log(error);
+  }
+}
 
 module.exports = {
   edit,
