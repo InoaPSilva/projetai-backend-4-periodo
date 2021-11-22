@@ -2,19 +2,24 @@ const Project = require("../models/project");
 const user = require("../models/user");
 
 const display = async (req, res) => {
-  if (req.params.id) {
-    const projects = await Project.find({ _id: req.params.id }).select(
-      "_id title summary objective class icon user category"
-    );
-
-    return res.json({ Status: 200, message: projects });
-  } else {
-    const projects = await Project.find({}).select(
-      "_id title summary objective class icon user category"
-    );
-
-    return res.json({ Status: 200, message: projects });
+  try {
+    if (req.params.id) {
+      const projects = await Project.findOne({ _id: req.params.id }).select(
+        "_id title summary objective class videoUrl icon banner user category"
+      );
+  
+      return res.json({ Status: 200, message: projects });
+    } else {
+      const projects = await Project.find({}).select(
+        "_id title summary objective class videoUrl icon banner user category"
+      );
+  
+      return res.json({ Status: 200, message: projects });
+    }
+  } catch (error) {
+    console.log(error);
   }
+  
 };
 
 const displayByAccount = async (req, res) => {
@@ -38,6 +43,7 @@ const register = async (req, res, next) => {
   newProject.summary = req.body.summary;
   newProject.category = req.body.category;
   newProject.objective = req.body.objective;
+  newProject.videoUrl = req.body.videoUrl;
   newProject.user.push(req.user[0]);
 try{
   newProject.save((err) => {
@@ -61,13 +67,16 @@ const edit = async (req, res) => {
         $set: {
           title: req.body.title,
           summary: req.body.summary,
+          category: req.body.category,
           objective: req.body.objective,
+          videoUrl: req.body.videoUrl
+          
         },
       },
     );
     res.sendStatus(200)
   } catch(error){
-    console.log("dont work");
+    console.log(error);
   }
 
 

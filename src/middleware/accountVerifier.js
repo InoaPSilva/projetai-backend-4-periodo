@@ -8,11 +8,12 @@ const verifyAccountType = async (req, res, next) => {
   req.accountType = Users.accountType;
 
   if (req.accountType === 2) {
+    req.role = req.accountType
     return next();
   } else {
-    return res.send(
-      "Esta conta não possui acesso a esta funcionalidade ou ocorreu algum erro de cadastro..."
-    );
+  
+    req.role = req.accountType
+    next()
   }
 };
 
@@ -26,9 +27,13 @@ const canEditProject = async (req, res, next) => {
   );
   req.accountType = Users.accountType;
 
-  if (req.accountType === 2 || projectOwnerId === req._id) {
+  if (req.accountType === 2) {
     return next();
-  } else {
+  } else if( projectOwnerId === req._id){
+    return next();
+  }else {
+    console.log(req._id);
+    console.log(req.accountType);
     return res.send(
       "Esta conta não possui acesso a esta funcionalidade ou ocorreu algum erro de cadastro..."
     );

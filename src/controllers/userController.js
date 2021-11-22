@@ -66,7 +66,8 @@ const forgotUser = async (req, res) => {
 };
 
 const tokenTest = (req, res) => {
-  res.send({ auth: req.logged, message: "Works..." });
+  console.log(req.role);
+  res.send({ auth: req.logged, roleType: req.role, message: "Works..." });
 };
 
 module.exports = {

@@ -17,7 +17,7 @@ router.get("/guests/display/:id?", admController.displayGuest);
 router.post(
   "/guests/register",
   jwt.verifyJwtToken,
-  accountVerifier.verifyAccountType,
+  accountVerifier.canEditProject,
   multer(multerConfigs).single("file"),
   fileController.registerSingle,
   admController.registerGuest
@@ -26,14 +26,14 @@ router.post(
 router.delete(
   "/guests/remove/:id?",
   jwt.verifyJwtToken,
-  accountVerifier.verifyAccountType,
+  accountVerifier.canEditProject,
   admController.removeGuest
 );
 
 router.put(
   "/guests/edit/:id?",
   jwt.verifyJwtToken,
-  accountVerifier.verifyAccountType,
+  accountVerifier.canEditProject,
   admController.editGuest
 );
 

@@ -19,7 +19,7 @@ router.get("/user/display/:id?", userController.displayUser);
 router.delete(
   "/user/remove/:id?",
   jwt.verifyJwtToken,
-  accountVerifier.verifyAccountType,
+  accountVerifier.canEditProject,
   userController.removeUser
 );
 
@@ -27,6 +27,6 @@ router.put("/user/edit/:id?", jwt.verifyJwtToken, userController.editUser);
 
 router.all("/userPassRetrival", mailer.sendEmail, userController.forgotUser);
 
-router.get("/tokenTest", jwt.verifyJwtToken, userController.tokenTest);
+router.get("/tokenTest", jwt.verifyJwtToken, accountVerifier.verifyAccountType, userController.tokenTest);
 
 module.exports = (app) => app.use("/", router);

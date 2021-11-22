@@ -14,7 +14,12 @@ const projectSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-
+  
+  videoUrl: {
+    type: String,
+    require: true,
+  },
+  
   category: String,
 
   user: [],
