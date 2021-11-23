@@ -5,13 +5,13 @@ const display = async (req, res) => {
   try {
     if (req.params.id) {
       const projects = await Project.findOne({ _id: req.params.id }).select(
-        "_id title summary objective class videoUrl icon banner user category"
+        "_id title summary objective class videoUrl icon user category"
       );
   
       return res.json({ Status: 200, message: projects });
     } else {
       const projects = await Project.find({}).select(
-        "_id title summary objective class videoUrl icon banner user category"
+        "_id title summary objective class videoUrl icon user category"
       );
   
       return res.json({ Status: 200, message: projects });
@@ -38,7 +38,6 @@ const register = async (req, res, next) => {
 
   req.user = await user.find({ _id: req._id }, { __v: 0, password: false });
   newProject.icon = req.uploadUrl[0];
-  newProject.banner = req.uploadUrl[1];
   newProject.title = req.body.title;
   newProject.summary = req.body.summary;
   newProject.category = req.body.category;

@@ -3,21 +3,17 @@ const mongoose = require("mongoose");
 const projectSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
   },
 
   summary: {
     type: String,
-    require: true,
   },
   objective: {
     type: String,
-    require: true,
   },
   
   videoUrl: {
     type: String,
-    require: true,
   },
   
   category: String,
@@ -25,8 +21,6 @@ const projectSchema = new mongoose.Schema({
   user: [],
 
   icon: [],
-
-  banner: [],
 
   createdAt: {
     type: Date,

@@ -5,27 +5,31 @@ const getFiles = async (req, res, next) => {
 
   return res.json({ Status: 200, message: files });
 };
-
 const registerMultiple = async (req, res, next) => {
-  req.uploadUrl = [];
-  await req.files.forEach((element) => {
-    const newFile = new file();
+  try {
+    req.uploadUrl = [];
+    console.log(req.files);
+    await req.files.forEach((element) => {
+      const newFile = new file();
 
-    newFile.originalName = element.originalName;
-    newFile.size = element.size;
-    newFile.key = element.key;
-    newFile.uploadUrl = element.uploadUrl;
+      newFile.originalName = element.originalName;
+      newFile.size = element.size;
+      newFile.key = element.key;
+      newFile.uploadUrl = element.uploadUrl;
 
-    newFile.save((err) => {
-      if (!err) {
-        req.uploadUrl.push(newFile.url);
-        console.log(req.uploadUrl);
-      } else {
-        res.send(err);
-        next();
-      }
+      newFile.save((err) => {
+        if (!err) {
+          req.uploadUrl.push(newFile.url);
+          console.log(req.uploadUrl);
+        } else {
+          res.send(err);
+          next();
+        }
+      });
     });
-  });
+  } catch (e) {
+    console.log(e);
+  }
 
   next();
 };
