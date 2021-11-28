@@ -40,35 +40,40 @@ const registerGuest = (req, res, next) => {
 
 // update guest by id
 const editGuest = async (req, res) => {
-  await Guest.updateOne(
-    { _id: req.params.id },
-    {
-      $set: {
-        name: req.body.name,
-        role: req.body.role,
-        linkedin: req.body.linkedin,
-        github: req.body.github,
+  try{
+    console.log(req.body);
+    await Guest.updateOne(
+      { _id: req.params.id },
+      {
+        $set: {
+          name: req.body.name,
+          role: req.body.role,
+          linkedin: req.body.linkedin,
+          github: req.body.github,
+          
+        },
       },
-    },
-    (err) => {
-      if (err) {
-        return res.sendStatus(400);
-      } else {
-        return res.send(200);
-      }
-    }
-  );
+    );
+    res.sendStatus(200)
+  } catch(error){
+    console.log(error);
+  }
+
 };
 
 // delete guest by id
 const removeGuest = async (req, res) => {
-  await Guest.deleteOne({ _id: req.params.id }, (err, result) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.sendStatus(200);
-    }
-  });
+  try {
+    await Guest.deleteOne({ _id: req.params.id }, (err, result) => {
+      if (err) {
+        return res.send(err);
+      } else {
+        return res.sendStatus(200);
+      }
+    });
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 module.exports = {
