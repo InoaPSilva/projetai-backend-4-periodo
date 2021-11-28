@@ -17,8 +17,8 @@ const fileController = require("../controllers/fileController");
 router.post(
   "/project/register",
   jwt.verifyJwtToken,
-  multer(multerConfigs).array("files", 2),
-  fileController.registerMultiple,
+  multer(multerConfigs).single("files"),
+  fileController.registerSingle,
   projectController.register
 );
 
