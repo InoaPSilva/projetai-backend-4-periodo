@@ -18,7 +18,7 @@ router.post(
   "/guests/register",
   jwt.verifyJwtToken,
   accountVerifier.canEditProject,
-  multer(multerConfigs).single("file"),
+  multer(multerConfigs).single("profilePic"),
   fileController.registerSingle,
   admController.registerGuest
 );

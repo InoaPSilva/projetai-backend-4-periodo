@@ -9,6 +9,7 @@ const registerMultiple = async (req, res, next) => {
   try {
     req.uploadUrl = [];
     console.log(req.files);
+
     await req.files.forEach((element) => {
       const newFile = new file();
 
@@ -35,24 +36,28 @@ const registerMultiple = async (req, res, next) => {
 };
 
 const registerSingle = async (req, res, next) => {
-  const newFile = new file();
-  console.log(req.file);
-  newFile.originalName = req.file.originalName;
-  newFile.size = req.file.size;
-  newFile.key = req.file.key;
-  newFile.uploadUrl = req.file.uploadUrl;
+  try {
+    const newFile = new file();
+    console.log(req.file);
+    newFile.originalName = req.file.originalName;
+    newFile.size = req.file.size;
+    newFile.key = req.file.key;
+    newFile.uploadUrl = req.file.uploadUrl;
+    newFile.save((err) => {
+      if (!err) {
+        req.uploadUrl = newFile.url;
+        console.log(req.uploadUrl);
+        next();
+      } else {
+        res.send(err);
 
-  newFile.save((err) => {
-    if (!err) {
-      req.uploadUrl = newFile.url;
-      console.log(req.uploadUrl);
-      next();
-    } else {
-      res.send(err);
-
-      next();
-    }
-  });
+        next();
+      }
+    });
+  }
+  catch (e) {
+    console.log(e);
+  }
 };
 
 const deleteFile = async (req, res) => {

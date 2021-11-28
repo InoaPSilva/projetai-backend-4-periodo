@@ -5,12 +5,12 @@ const Guest = require("../models/guest");
 const displayGuest = async (req, res, next) => {
   if (req.params.id) {
     const Guests = await Guest.find({ _id: req.params.id }).select(
-      "_id name role linkedin github "
+      "_id name role linkedin github profilePic"
     );
     return res.json({ Status: 200, message: Guests });
   } else {
     const Guests = await Guest.find({}).select(
-      "_id name role linkedin github "
+      "_id name role linkedin github profilePic"
     );
     return res.json({ Status: 200, message: Guests });
   }

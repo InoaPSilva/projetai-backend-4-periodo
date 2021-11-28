@@ -20,7 +20,6 @@ const storageTypes = {
 
         cb(null, file.key);
         console.log("Local");
-
       });
     }
   }),
