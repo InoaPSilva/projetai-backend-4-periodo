@@ -38,6 +38,8 @@ router.delete(
 
 router.get("/project/:id?", projectController.display);
 
+router.get("/project/period/:period?", projectController.displayByPeriod);
+
 router.get(
   "/projectsByUser",
   jwt.verifyJwtToken,

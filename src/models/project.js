@@ -15,8 +15,12 @@ const projectSchema = new mongoose.Schema({
   videoUrl: {
     type: String,
   },
+
+  period: {
+    type: String,
+  },
   
-  category: String,
+  // category: String,
 
   user: [],
 
