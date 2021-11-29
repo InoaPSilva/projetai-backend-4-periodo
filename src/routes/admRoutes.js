@@ -14,6 +14,8 @@ router.get("/auth", (req, res) => {
 
 router.get("/guests/display/:id?", admController.displayGuest);
 
+router.get("/guests/display/:id?", admController.displayGuestByType);
+
 router.post(
   "/guests/register",
   jwt.verifyJwtToken,

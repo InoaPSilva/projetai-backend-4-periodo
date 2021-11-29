@@ -5,12 +5,12 @@ const Guest = require("../models/guest");
 const displayGuest = async (req, res, next) => {
   if (req.params.id) {
     const Guests = await Guest.find({ _id: req.params.id }).select(
-      "_id name role linkedin github profilePic"
+      "_id name role linkedin github profilePic type"
     );
     return res.json({ Status: 200, message: Guests });
   } else {
     const Guests = await Guest.find({}).select(
-      "_id name role linkedin github profilePic"
+      "_id name role linkedin github profilePic type"
     );
     return res.json({ Status: 200, message: Guests });
   }
@@ -24,6 +24,7 @@ const registerGuest = (req, res, next) => {
   newGuest.name = req.body.name;
   newGuest.role = req.body.role;
   newGuest.profilePic = req.uploadUrl;
+  newGuest.type = req.type;
 
   newGuest.linkedin = req.body.linkedin;
   newGuest.github = req.body.github;
@@ -50,7 +51,7 @@ const editGuest = async (req, res) => {
           role: req.body.role,
           linkedin: req.body.linkedin,
           github: req.body.github,
-          
+          type:  req.body.type,
         },
       },
     );
@@ -59,6 +60,18 @@ const editGuest = async (req, res) => {
     console.log(error);
   }
 
+};
+
+const displayGuestByType = async (req, res, next) => {
+ try {
+    const Guests = await Guest.find({ _id: req.params.id }).select(
+      "_id name role linkedin github profilePic type"
+    );
+    return res.json({ Status: 200, message: Guests });
+  } catch(e) {
+    console.log(e);
+    
+  }
 };
 
 // delete guest by id
@@ -81,4 +94,5 @@ module.exports = {
   displayGuest,
   removeGuest,
   editGuest,
+  displayGuestByType
 };
