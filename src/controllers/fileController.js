@@ -37,6 +37,7 @@ const registerMultiple = async (req, res, next) => {
 
 const registerSingle = async (req, res, next) => {
   try {
+    console.log(req.body);
     const newFile = new file();
     console.log(req.file);
     newFile.originalName = req.file.originalName;
