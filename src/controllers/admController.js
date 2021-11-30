@@ -24,7 +24,7 @@ const registerGuest = (req, res, next) => {
   newGuest.name = req.body.name;
   newGuest.role = req.body.role;
   newGuest.profilePic = req.uploadUrl;
-  newGuest.type = req.type;
+  newGuest.PoG = req.body.PoG;
 
   newGuest.linkedin = req.body.linkedin;
   newGuest.github = req.body.github;

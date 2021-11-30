@@ -11,7 +11,7 @@ const guestSchema = new mongoose.Schema({
     required: true,
   },
 
-  type: {
+  PoG: {
     type: String,
     required: true,
   },

@@ -56,6 +56,7 @@ const register = async (req, res, next) => {
   newProject.title = req.body.title;
   newProject.summary = req.body.summary;
   newProject.period = req.body.period;
+  newProject.category = req.body.category;
   newProject.objective = req.body.objective;
   newProject.videoUrl = req.body.videoUrl;
   newProject.user.push(req.user[0]);
@@ -79,11 +80,12 @@ const edit = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
-          title: req.body.title,
-          summary: req.body.summary,
-          period: req.body.period,
-          objective: req.body.objective,
-          videoUrl: req.body.videoUrl
+          title = req.body.title,
+          summary = req.body.summary,
+          period = req.body.period,
+          category = req.body.category,
+          objective = req.body.objective,
+          videoUrl = req.body.videoUrl,
 
         },
       },
