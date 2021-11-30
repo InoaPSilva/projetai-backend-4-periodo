@@ -80,12 +80,12 @@ const edit = async (req, res) => {
       { _id: req.params.id },
       {
         $set: {
-          title = req.body.title,
-          summary = req.body.summary,
-          period = req.body.period,
-          category = req.body.category,
-          objective = req.body.objective,
-          videoUrl = req.body.videoUrl,
+          title: req.body.title,
+          summary: req.body.summary,
+          period: req.body.period,
+          category: req.body.category,
+          objective: req.body.objective,
+          videoUrl: req.body.videoUrl
 
         },
       },
