@@ -17,7 +17,7 @@ const projectSchema = new mongoose.Schema({
     required: true,
 
   },
-  
+
   videoUrl: {
     type: String,
     required: true,
@@ -29,8 +29,11 @@ const projectSchema = new mongoose.Schema({
     required: true,
 
   },
-  
-  // category: String,
+
+  category: {
+    type: String,
+    required: true
+  },
 
   user: [],
 
